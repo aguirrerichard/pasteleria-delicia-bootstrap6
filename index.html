@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pastelería Delicia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+        crossorigin="anonymous">
+  <link href="css/estilos.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Menú superior: Navbar + Drawer -->
+  <nav class="navbar md:navbar-expand">
+    <div class="container">
+      <a class="navbar-brand" href="#">Delicia</a>
+      <button class="btn btn-outline theme-primary" data-bs-toggle="drawer" data-bs-target="#carrito">
+        Carrito <span class="badge theme-primary" id="contador">0</span>
+      </button>
+      <button class="btn-icon navbar-toggler" data-bs-toggle="drawer" data-bs-target="#menu" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <dialog class="drawer drawer-end" id="menu">
+        <div class="drawer-header"><button class="btn-close" data-bs-dismiss="drawer" aria-label="Cerrar"></button></div>
+        <div class="drawer-body">
+          <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pedido">Torta personalizada</a></li>
+          </ul>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+
+  <main class="container py-9">
+    <h1 class="fs-4xl">Pastelería Delicia</h1>
+    <p class="fg-secondary">Elige tus favoritos y arma tu pedido.</p>
+
+    <!-- Buscador y filtros -->
+    <section id="catalogo" class="py-7">
+      <input class="form-control mb-7" id="buscar" type="search" placeholder="Buscar producto…" aria-label="Buscar producto">
+      <ul class="nav nav-pills mb-7" id="filtros"></ul>
+      <div class="row row-cols-1 md:row-cols-2 lg:row-cols-3 g-7" id="productos"></div>
+    </section>
+
+    <!-- Pedido especial -->
+    <section id="pedido" class="py-7">
+      <h2 class="fs-2xl">Torta personalizada</h2>
+      <form id="formPedido" class="row g-7">
+        <div class="col md:col-6"><input class="form-control" id="nombre" placeholder="Tu nombre" required></div>
+        <div class="col md:col-6"><input class="form-control" id="sabor" placeholder="Sabor y mensaje de la torta" required></div>
+        <div class="col"><button class="btn btn-solid theme-primary" type="submit">Enviar pedido</button></div>
+      </form>
+      <div class="alert theme-success mt-7" id="alertaPedido" hidden>¡Pedido recibido! Te contactaremos pronto.</div>
+    </section>
+  </main>
+
+  <!-- Carrito: Drawer + List group -->
+  <dialog class="drawer drawer-end" id="carrito">
+    <div class="drawer-header">
+      <h5>Tu carrito</h5>
+      <button class="btn-close" data-bs-dismiss="drawer" aria-label="Cerrar"></button>
+    </div>
+    <div class="drawer-body">
+      <ul class="list-group" id="listaCarrito"></ul>
+      <p class="mt-7">Subtotal: <strong id="subtotal">S/ 0.00</strong></p>
+      <p class="fg-secondary" id="descuento"></p>
+      <p class="fs-xl">Total: <strong id="total">S/ 0.00</strong></p>
+      <button class="btn btn-outline theme-danger" id="vaciar">Vaciar carrito</button>
+    </div>
+  </dialog>
+
+  <!-- Toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-7">
+    <div class="toast" id="aviso" role="status" aria-live="polite">
+      <div class="toast-body" id="avisoTexto"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/tienda.js"></script>
+</body>
+</html>

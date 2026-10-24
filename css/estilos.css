@@ -1,0 +1,10 @@
+:root {
+  /* "primary" ahora es el color frambuesa de la marca */
+  --bs-primary-base: #b8325a;
+  --bs-primary-bg: #b8325a;
+  --bs-primary-fg: #8f2145;
+  --bs-primary-bg-subtle: #fbe3e8;
+  --bs-primary-contrast: #ffffff;
+  --bs-body-font-family: "Nunito Sans", system-ui, sans-serif;
+}
+.card .precio { font-weight: 700; color: var(--bs-primary-fg); }
